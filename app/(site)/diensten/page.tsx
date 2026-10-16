@@ -42,14 +42,14 @@ export default function Diensten() {
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           <Reveal className="rounded-2xl bg-paper p-8 shadow-sm ring-1 ring-ink/5 md:p-10">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-crust">Kwaliteit</p>
-            <h2 className="mt-3 font-display text-3xl">Volgens de hoogste standaarden</h2>
+            <h2 className="mt-3 font-display text-blue text-3xl">Volgens de hoogste standaarden</h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/80">
               Voor de <b className={b}>kwaliteit van uw broden en gebak</b>, nemen we geen enkel risico. We kiezen dan ook voluit voor verse producten, die volgens de hoogste standaarden worden verwerkt, bereid en vervoerd.
             </p>
           </Reveal>
           <Reveal delay={120} className="rounded-2xl bg-paper p-8 shadow-sm ring-1 ring-ink/5 md:p-10">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-crust">Gekeurd</p>
-            <h2 className="mt-3 font-display text-3xl">Elk jaar extern gecontroleerd</h2>
+            <h2 className="mt-3 font-display text-blue text-3xl">Elk jaar extern gecontroleerd</h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/80">
               Om u die zekerheid te garanderen, laten we onze ateliers en werkwijze elk jaar keuren door een externe firma. Dat verzekert u van overheerlijke producten die zonder uitzondering <b className={b}>voldoen aan de striktste HACCP-standaarden</b>.
             </p>

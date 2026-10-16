@@ -56,7 +56,7 @@ export default async function Geschiedenis() {
             <Reveal as="li" key={s.nr} delay={i * 100} className="relative grid gap-5 rounded-2xl bg-paper p-7 shadow-sm ring-1 ring-ink/5 md:grid-cols-[3.5rem_1fr] md:gap-8 md:p-10">
               <span className="relative z-10 grid size-14 place-items-center rounded-full bg-blue font-display text-xl text-white">{s.nr}</span>
               <div>
-                <h2 className="font-display text-2xl leading-tight md:text-3xl">{s.title}</h2>
+                <h2 className="font-display text-blue text-2xl leading-tight md:text-3xl">{s.title}</h2>
                 <div className="mt-4 space-y-4 text-lg leading-relaxed text-ink/80">{s.body}</div>
               </div>
             </Reveal>

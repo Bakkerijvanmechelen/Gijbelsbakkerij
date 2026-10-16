@@ -20,7 +20,7 @@ function Feature({ id, image, alt, title, flip, children }: { id: string; image:
         <Image src={image} alt={alt} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" />
       </Reveal>
       <Reveal delay={120} className={flip ? "md:order-1" : ""}>
-        <h2 className="font-display text-[clamp(1.9rem,3.6vw,2.8rem)] leading-tight">{title}</h2>
+        <h2 className="font-display text-blue text-[clamp(1.9rem,3.6vw,2.8rem)] leading-tight">{title}</h2>
         <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink/80">{children}</div>
       </Reveal>
     </section>
@@ -66,7 +66,7 @@ export default function Assortiment() {
       </Feature>
 
       <section className="mx-auto max-w-6xl px-5 pt-24">
-        <h2 className="mb-6 font-display text-3xl">Uit onze toonbank</h2>
+        <h2 className="mb-6 font-display text-blue text-3xl">Uit onze toonbank</h2>
         <Gallery images={gallery} />
       </section>
 

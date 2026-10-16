@@ -7,7 +7,7 @@ export default async function SiteFooter() {
   const main = shops.find((s) => s.kind === "eigen");
 
   return (
-    <footer className="bg-ink text-flour">
+    <footer className="bg-blue-deep text-flour">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-3">
         {main && (
           <address className="not-italic">
@@ -42,7 +42,7 @@ export default async function SiteFooter() {
           </ul>
         </nav>
       </div>
-      <p className="border-t border-flour/10 py-5 text-center text-sm text-flour/50">© 2026 Bakkerij Gijbels</p>
+      <p className="border-t border-flour/10 py-5 text-center text-sm text-flour/60">© 2026 Bakkerij Gijbels</p>
     </footer>
   );
 }

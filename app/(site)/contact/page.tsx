@@ -19,7 +19,7 @@ export default async function Contact() {
       <PageHero eyebrow="Contact" title="Contacteer ons" subtitle="Heeft u vragen? Stuur ons een bericht via onderstaand contactformulier!" />
       <section className="mx-auto grid max-w-6xl gap-8 px-5 pt-12 md:grid-cols-[1.4fr_1fr]">
         <Reveal className="rounded-2xl bg-paper p-7 shadow-sm ring-1 ring-ink/5 md:p-10">
-          <h2 className="mb-7 font-display text-3xl">Stuur ons een bericht</h2>
+          <h2 className="mb-7 font-display text-blue text-3xl">Stuur ons een bericht</h2>
           <ContactForm />
         </Reveal>
         <Reveal delay={120} className="grid content-start gap-6">

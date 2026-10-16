@@ -21,7 +21,7 @@ export default function SiteHeader() {
   const cls = (href: string) => `transition hover:text-butter ${path === href ? "text-butter" : ""}`;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-ink/90 text-flour backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 bg-blue-deep/95 text-white backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2">
         <Link href="/" onClick={close} aria-label="Bakkerij Gijbels, naar home" className="shrink-0">
           <Image src="/images/logo.jpg" alt="Gijbels" width={200} height={70} priority className="h-10 w-auto rounded bg-white p-1" />

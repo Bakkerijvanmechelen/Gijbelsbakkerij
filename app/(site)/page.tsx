@@ -17,9 +17,9 @@ export default async function Home() {
 
   return (
     <>
-      <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-ink text-flour">
-        <Image src="/images/hero-bakker.jpg" alt="Een bakker strooit bloem" fill priority sizes="100vw" className="hero-zoom object-cover opacity-55" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/45 to-transparent" />
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-blue-deep text-flour">
+        <Image src="/images/hero-bakker.jpg" alt="Een bakker strooit bloem" fill priority sizes="100vw" className="hero-zoom object-cover opacity-50 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-deep/90 via-blue-deep/50 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-5 pt-24">
           <p className="fade-up text-sm font-bold uppercase tracking-[0.25em] text-butter">Ambachtelijke bakkerij in Antwerpen</p>
           <h1 className="fade-up mt-4 max-w-3xl font-display text-5xl leading-[1.05] md:text-7xl" style={{ animationDelay: "120ms" }}>
@@ -36,7 +36,7 @@ export default async function Home() {
 
       <section className="mx-auto max-w-6xl px-5 py-24">
         <Reveal>
-          <h2 className="font-display text-4xl md:text-5xl">Ons assortiment</h2>
+          <h2 className="font-display text-4xl text-blue md:text-5xl">Ons assortiment</h2>
           <p className="mt-4 max-w-2xl text-lg text-ink/80">U kent het wel: de typische geur van uw lokale bakker. Er gaat niets boven versgebakken brood, gebak, taarten en patisserie.</p>
         </Reveal>
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
@@ -46,7 +46,7 @@ export default async function Home() {
                 <Image src={c.image} alt={c.title} fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
               </div>
               <div className="p-6">
-                <h3 className="font-display text-2xl">{c.title}</h3>
+                <h3 className="font-display text-2xl text-blue">{c.title}</h3>
                 <p className="mt-2 text-ink/80">{c.text}</p>
                 <Link href={c.href} className="mt-4 inline-block text-sm font-bold uppercase tracking-wider text-crust underline underline-offset-4 hover:text-blue">
                   Ontdek meer
@@ -57,8 +57,8 @@ export default async function Home() {
         </ul>
       </section>
 
-      <section className="relative overflow-hidden bg-ink text-flour">
-        <Image src="/images/galerij-4.jpg" alt="" fill sizes="100vw" className="object-cover opacity-25" />
+      <section className="relative overflow-hidden bg-blue-deep text-flour">
+        <Image src="/images/galerij-4.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 mix-blend-luminosity" />
         <div className="relative mx-auto max-w-6xl px-5 py-24">
           <Reveal>
             <h2 className="font-display text-4xl md:text-5xl">{n} vestigingen, dezelfde verrukkelijke kwaliteit</h2>
@@ -69,7 +69,7 @@ export default async function Home() {
               ["Ingrediënten", "Voedzame broden bereid met de beste ingrediënten die de natuur ons te bieden heeft, en verrassende recepturen voor gebak die van elke hap een feest maken."],
               ["Met de glimlach", `Onze ${n} vestigingen in de provincie Antwerpen serveren het lekkerste van een ambachtelijke bakker, door medewerkers die houden van hun vak.`],
             ].map(([t, p], i) => (
-              <Reveal as="li" key={t} delay={i * 100} className="rounded-xl border border-flour/15 bg-ink/60 p-6 backdrop-blur">
+              <Reveal as="li" key={t} delay={i * 100} className="rounded-xl border border-flour/15 bg-blue-deep/70 p-6 backdrop-blur">
                 <h3 className="font-display text-xl text-butter">{t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-flour/85">{p}</p>
               </Reveal>
@@ -87,7 +87,7 @@ export default async function Home() {
           <Image src={tiles[0].image.replace("cat-brood", "assortiment-broden")} alt="Gijbels brood" fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
         </Reveal>
         <Reveal delay={120}>
-          <h2 className="font-display text-4xl md:text-5xl">De bakker met het lekkerste assortiment</h2>
+          <h2 className="font-display text-4xl text-blue md:text-5xl">De bakker met het lekkerste assortiment</h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink/80">
             <p>
               U moest eens weten hoe goed u Bakkerij Gijbels al kent. Waarschijnlijk genoot u al met volle teugen van onze gebakjes, of smeerde u de lekkerste boterham met brood dat krokant gebakken werd in onze ovens.
