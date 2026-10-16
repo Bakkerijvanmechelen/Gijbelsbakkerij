@@ -93,7 +93,7 @@ export default function ShopExplorer({ shops }: { shops: Shop[] }) {
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-5 pt-10">
+    <div className="mx-auto max-w-6xl px-5 pb-24 pt-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div role="tablist" aria-label="Soort winkel" className="flex flex-wrap gap-2">
           {tab("alle", "Alle", shops.length)}
