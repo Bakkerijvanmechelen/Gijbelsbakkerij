@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import CountUp from "@/components/CountUp";
 import CtaBand from "@/components/CtaBand";
+import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
+import Words from "@/components/Words";
 import { tiles } from "@/lib/content";
 import { getShopCount } from "@/lib/shops";
 
@@ -18,32 +21,37 @@ export default async function Home() {
   return (
     <>
       <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-blue-deep text-flour">
-        <Image src="/images/hero-bakker.jpg" alt="Een bakker strooit bloem" fill priority sizes="100vw" className="hero-zoom object-cover opacity-50 mix-blend-luminosity" />
+        <Parallax speed={0.3}>
+          <Image src="/images/hero-bakker.jpg" alt="Een bakker strooit bloem" fill priority sizes="100vw" className="hero-zoom object-cover opacity-50 mix-blend-luminosity" />
+        </Parallax>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-deep/90 via-blue-deep/50 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-5 pt-24">
           <p className="fade-up text-sm font-bold uppercase tracking-[0.25em] text-butter">Ambachtelijke bakkerij in Antwerpen</p>
-          <h1 className="fade-up mt-4 max-w-3xl font-display text-5xl leading-[1.05] md:text-7xl" style={{ animationDelay: "120ms" }}>
-            Echt bakmanschap
+          <h1 className="fade-up mt-4 max-w-3xl font-display text-5xl leading-[1.05] md:text-7xl" >
+            <Words text="Echt bakmanschap" />
           </h1>
           <p className="fade-up mt-6 max-w-xl text-lg leading-relaxed text-flour/90" style={{ animationDelay: "240ms" }}>
             De bakker met het lekkerste assortiment. Brood dat krokant gebakken wordt in onze eigen ovens, patisserie en vlaaien, in {n} vestigingen vlakbij u.
           </p>
-          <Link href="/winkels" className="fade-up mt-8 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white" style={{ animationDelay: "360ms" }}>
-            Ontdek onze winkels
+          <Link href="/winkels" className="btn-arrow fade-up mt-8 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white" style={{ animationDelay: "700ms" }}>
+            Ontdek onze winkels <span aria-hidden>→</span>
           </Link>
         </div>
+        <a href="#assortiment" aria-label="Naar beneden" className="bob absolute bottom-6 left-1/2 hidden size-10 -translate-x-1/2 place-items-center rounded-full border border-flour/40 text-flour/80 md:grid">
+          ↓
+        </a>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-24">
+      <section id="assortiment" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
         <Reveal>
           <h2 className="font-display text-4xl text-blue md:text-5xl">Ons assortiment</h2>
           <p className="mt-4 max-w-2xl text-lg text-ink/80">U kent het wel: de typische geur van uw lokale bakker. Er gaat niets boven versgebakken brood, gebak, taarten en patisserie.</p>
         </Reveal>
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {cards.map((c, i) => (
-            <Reveal as="li" key={c.title} delay={(i % 2) * 120} className="overflow-hidden rounded-2xl bg-white shadow-md shadow-ink/10">
-              <div className="relative aspect-[4/3]">
-                <Image src={c.image} alt={c.title} fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
+            <Reveal as="li" key={c.title} delay={(i % 2) * 120} from={i % 2 ? "right" : "left"} className="lift overflow-hidden rounded-2xl bg-white shadow-md shadow-ink/10">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={c.image} alt={c.title} fill sizes="(min-width: 768px) 560px, 100vw" className="zoom-img object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="font-display text-2xl text-blue">{c.title}</h3>
@@ -61,7 +69,7 @@ export default async function Home() {
         <Image src="/images/galerij-4.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 mix-blend-luminosity" />
         <div className="relative mx-auto max-w-6xl px-5 py-24">
           <Reveal>
-            <h2 className="font-display text-4xl md:text-5xl">{n} vestigingen, dezelfde verrukkelijke kwaliteit</h2>
+            <h2 className="font-display text-4xl md:text-5xl"><span className="text-butter"><CountUp to={n} /></span> vestigingen, dezelfde verrukkelijke kwaliteit</h2>
           </Reveal>
           <ul className="mt-10 grid gap-4 md:grid-cols-3">
             {[
@@ -69,7 +77,7 @@ export default async function Home() {
               ["Ingrediënten", "Voedzame broden bereid met de beste ingrediënten die de natuur ons te bieden heeft, en verrassende recepturen voor gebak die van elke hap een feest maken."],
               ["Met de glimlach", `Onze ${n} vestigingen in de provincie Antwerpen serveren het lekkerste van een ambachtelijke bakker, door medewerkers die houden van hun vak.`],
             ].map(([t, p], i) => (
-              <Reveal as="li" key={t} delay={i * 100} className="rounded-xl border border-flour/15 bg-blue-deep/70 p-6 backdrop-blur">
+              <Reveal as="li" key={t} delay={i * 140} from="zoom" className="rounded-xl border border-flour/15 bg-blue-deep/70 p-6 backdrop-blur">
                 <h3 className="font-display text-xl text-butter">{t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-flour/85">{p}</p>
               </Reveal>
@@ -83,10 +91,10 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
-        <Reveal className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-md shadow-ink/10">
+        <Reveal from="left" className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-md shadow-ink/10">
           <Image src={tiles[0].image.replace("cat-brood", "assortiment-broden")} alt="Gijbels brood" fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
         </Reveal>
-        <Reveal delay={120}>
+        <Reveal delay={150} from="right">
           <h2 className="font-display text-4xl text-blue md:text-5xl">De bakker met het lekkerste assortiment</h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink/80">
             <p>

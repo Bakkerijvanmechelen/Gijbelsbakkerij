@@ -6,6 +6,7 @@ type Props = {
   children: React.ReactNode;
   as?: "div" | "li" | "article" | "section" | "p";
   delay?: number;
+  from?: "up" | "left" | "right" | "zoom";
   className?: string;
 };
 
@@ -13,7 +14,7 @@ type Props = {
  * Laat een element zacht verschijnen als het in beeld komt.
  * Zonder JavaScript of met "minder beweging" blijft alles gewoon zichtbaar.
  */
-export default function Reveal({ children, as = "div", delay = 0, className = "" }: Props) {
+export default function Reveal({ children, as = "div", delay = 0, from = "up", className = "" }: Props) {
   const ref = useRef<HTMLElement>(null);
   const [state, setState] = useState<"idle" | "hidden" | "shown">("idle");
 
@@ -39,7 +40,7 @@ export default function Reveal({ children, as = "div", delay = 0, className = ""
   return (
     <Tag
       ref={ref}
-      className={`${className} ${state === "hidden" ? "reveal-hidden" : ""} ${state === "shown" ? "reveal-shown" : ""}`}
+      className={`${className} ${state === "hidden" ? `reveal-hidden reveal-from-${from}` : ""} ${state === "shown" ? "reveal-shown" : ""}`}
       style={{ transitionDelay: state === "shown" ? `${delay}ms` : undefined }}
     >
       {children}

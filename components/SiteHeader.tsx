@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -17,12 +17,25 @@ const nav = [
 export default function SiteHeader() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? window.scrollY / max : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const close = () => setOpen(false);
-  const cls = (href: string) => `transition hover:text-butter ${path === href ? "text-butter" : ""}`;
+  const cls = (href: string) => `nav-link transition hover:text-butter ${path === href ? "text-butter" : ""}`;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-blue-deep/95 text-white backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2">
+    <header className={`fixed inset-x-0 top-0 z-50 text-white backdrop-blur transition-all duration-300 ${scrolled ? "bg-blue-deep shadow-lg shadow-ink/20" : "bg-blue-deep/80"}`}>
+      <div className={`mx-auto flex max-w-6xl items-center justify-between px-5 transition-all duration-300 ${scrolled ? "py-1" : "py-2.5"}`}>
         <Link href="/" onClick={close} aria-label="Bakkerij Gijbels, naar home" className="shrink-0">
           <Image src="/images/logo-wit.png" alt="Gijbels" width={715} height={224} priority className="h-11 w-auto" />
         </Link>
@@ -53,6 +66,7 @@ export default function SiteHeader() {
         </button>
       </div>
 
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-butter" style={{ transform: `scaleX(${progress})` }} />
       <nav id="mobiel-menu" aria-label="Menu" hidden={!open} className="border-t border-flour/15 md:hidden">
         <ul className="mx-auto max-w-6xl px-5 py-2">
           {nav.map((n) => (
