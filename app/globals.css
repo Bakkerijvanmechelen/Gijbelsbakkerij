@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --blue: #2f4a9c;
+  --olive: #5e573e;
+  --grey: #f1f1f1;
+  --light: #fafafa;
+}
+
+@theme inline {
+  --color-blue: var(--blue);
+  --color-olive: var(--olive);
+  --color-grey: var(--grey);
+  --color-light: var(--light);
+  --color-ink: #1b1511;
+  --color-flour: #f6efe4;
+  --color-crust: #b5651d;
+  --color-sage: #a9c192;
+  --color-sage-light: #c4e1a7;
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-display: var(--font-stoke), Georgia, serif;
+  --font-footer: var(--font-arimo), Arial, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Leaflet: de kaart mag niet boven het menu uitkomen */
+.leaflet-container { font-family: var(--font-montserrat), system-ui, sans-serif; z-index: 0; }
