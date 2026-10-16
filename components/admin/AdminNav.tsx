@@ -6,6 +6,7 @@ import { Icon, Svg } from "./ui";
 
 const items = [
   { href: "/admin", label: "Berichten", icon: Icon.mail, exact: true, badge: true },
+  { href: "/admin/winkels", label: "Winkels", icon: Icon.store },
   { href: "/admin/account", label: "Mijn account", icon: Icon.user },
 ];
 
