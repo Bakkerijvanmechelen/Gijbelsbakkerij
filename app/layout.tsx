@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans, Young_Serif } from "next/font/google";
+import { Fraunces, Lato } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({ variable: "--font-dm-sans", subsets: ["latin"] });
-const youngSerif = Young_Serif({ variable: "--font-young-serif", subsets: ["latin"], weight: "400" });
+const lato = Lato({ variable: "--font-lato", subsets: ["latin"], weight: ["400", "700"] });
+const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bakkerij Gijbels: uw bakker in Antwerpen",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="nl" className={`${dmSans.variable} ${youngSerif.variable}`}>
+    <html lang="nl" className={`${lato.variable} ${fraunces.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

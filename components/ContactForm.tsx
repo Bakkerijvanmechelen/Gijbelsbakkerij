@@ -10,7 +10,7 @@ export default function ContactForm() {
 
   if (state?.ok) {
     return (
-      <div role="status" className="rounded-3xl bg-sage-light/50 p-10 text-center">
+      <div role="status" className="rounded-2xl bg-sage-light/50 p-10 text-center">
         <p className="text-4xl" aria-hidden>
           🥖
         </p>

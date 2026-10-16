@@ -116,14 +116,14 @@ export default function ShopExplorer({ shops }: { shops: Shop[] }) {
             ))}
           </ul>
           {shown.length === 0 && (
-            <p className="rounded-3xl bg-paper p-10 text-center text-lg text-ink/70 ring-1 ring-ink/10" role="status">
+            <p className="rounded-2xl bg-paper p-10 text-center text-lg text-ink/70 ring-1 ring-ink/10" role="status">
               Geen winkel gevonden voor “{query}”.
             </p>
           )}
         </div>
 
         <div className="order-1 lg:sticky lg:top-24 lg:order-2">
-          <div ref={mapEl} role="region" aria-label="Kaart met alle bakkerijen" className="h-[340px] w-full overflow-hidden rounded-[2rem] bg-blue-soft shadow-xl shadow-ink/10 ring-1 ring-ink/10 lg:h-[calc(100vh-8rem)] lg:min-h-[480px]" />
+          <div ref={mapEl} role="region" aria-label="Kaart met alle bakkerijen" className="h-[340px] w-full overflow-hidden rounded-2xl bg-blue-soft shadow-md shadow-ink/10 ring-1 ring-ink/10 lg:h-[calc(100vh-8rem)] lg:min-h-[480px]" />
           <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 px-2 text-sm text-ink/60">
             <span><span className="mr-1.5 inline-block size-2.5 rounded-full bg-crust" />Gijbels-winkel</span>
             <span><span className="mr-1.5 inline-block size-2.5 rounded-full bg-blue" />Bakkerij in de groep</span>

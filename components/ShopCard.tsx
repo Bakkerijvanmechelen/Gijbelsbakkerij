@@ -36,7 +36,7 @@ export default function ShopCard({ shop, active, onSelect }: { shop: CardShop; a
   );
 
   return (
-    <article id={shop.id ? `shop-${shop.id}` : undefined} className={`@container flex flex-col rounded-3xl bg-paper p-5 shadow-sm ring-1 transition ${active ? "shadow-lg ring-2 ring-crust" : "ring-ink/10"}`}>
+    <article id={shop.id ? `shop-${shop.id}` : undefined} className={`@container flex flex-col rounded-2xl bg-paper p-5 shadow-sm ring-1 transition ${active ? "shadow-lg ring-2 ring-crust" : "ring-ink/10"}`}>
       {onSelect ? (
         <button type="button" onClick={onSelect} className="flex w-full items-start gap-4 text-left" aria-label={`${shop.name} tonen op de kaart`}>
           {head}

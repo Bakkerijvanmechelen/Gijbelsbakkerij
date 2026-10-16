@@ -16,7 +16,7 @@ const b = "font-bold text-blue";
 function Feature({ id, image, alt, title, flip, children }: { id: string; image: string; alt: string; title: string; flip?: boolean; children: React.ReactNode }) {
   return (
     <section id={id} className="mx-auto grid max-w-6xl scroll-mt-24 items-center gap-10 px-5 pt-20 md:grid-cols-2 md:gap-16">
-      <Reveal className={`relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-blue-soft shadow-xl shadow-ink/10 ${flip ? "md:order-2 md:rotate-1" : "md:-rotate-1"}`}>
+      <Reveal className={`relative aspect-[4/3] overflow-hidden rounded-2xl bg-blue-soft shadow-md shadow-ink/10 ${flip ? "md:order-2" : "md:-rotate-1"}`}>
         <Image src={image} alt={alt} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" />
       </Reveal>
       <Reveal delay={120} className={flip ? "md:order-1" : ""}>

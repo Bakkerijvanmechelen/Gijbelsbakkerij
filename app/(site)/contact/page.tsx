@@ -18,13 +18,13 @@ export default async function Contact() {
     <>
       <PageHero eyebrow="Contact" title="Contacteer ons" subtitle="Heeft u vragen? Stuur ons een bericht via onderstaand contactformulier!" />
       <section className="mx-auto grid max-w-6xl gap-8 px-5 pt-12 md:grid-cols-[1.4fr_1fr]">
-        <Reveal className="rounded-[2rem] bg-paper p-7 shadow-sm ring-1 ring-ink/5 md:p-10">
+        <Reveal className="rounded-2xl bg-paper p-7 shadow-sm ring-1 ring-ink/5 md:p-10">
           <h2 className="mb-7 font-display text-3xl">Stuur ons een bericht</h2>
           <ContactForm />
         </Reveal>
         <Reveal delay={120} className="grid content-start gap-6">
           {main && (
-            <address className="rounded-[2rem] bg-blue-deep p-8 not-italic text-white">
+            <address className="rounded-2xl bg-blue-deep p-8 not-italic text-white">
               <p className="font-display text-2xl text-butter">{main.name}</p>
               <p className="mt-4 text-lg leading-relaxed text-white/90">
                 {main.street}
@@ -43,7 +43,7 @@ export default async function Contact() {
               ))}
             </address>
           )}
-          <div className="rounded-[2rem] bg-butter p-8">
+          <div className="rounded-2xl bg-butter p-8">
             <p className="font-display text-2xl">Liever langskomen?</p>
             <p className="mt-2 text-lg">Bekijk al onze bakkerijen met adres en openingsuren.</p>
             <Link href="/winkels" className="mt-5 inline-block rounded-full bg-blue px-6 py-3 font-bold text-white hover:bg-blue-deep">

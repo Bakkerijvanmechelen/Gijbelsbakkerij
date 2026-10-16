@@ -27,7 +27,7 @@ export default function Diensten() {
               Als ervaren én ambachtelijke bakker brengen we de lekkerste broden, patisserie, gebak en andere <b className={b}>lekkernijen tot aan uw deur</b>. Onze <b className={b}>stipte service</b> verzekert u op elk moment van de week van uitmuntende kwaliteitsproducten, altijd vers bereid in onze ateliers.
             </p>
           </Reveal>
-          <Reveal delay={120} className="self-start rounded-[2rem] bg-blue-soft p-8">
+          <Reveal delay={120} className="self-start rounded-2xl bg-blue-soft p-8">
             <p className="font-display text-2xl text-blue">Voor wie?</p>
             <ul className="mt-5 flex flex-wrap gap-2">
               {forWhom.map((w) => (
@@ -40,14 +40,14 @@ export default function Diensten() {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <Reveal className="rounded-[2rem] bg-paper p-8 shadow-sm ring-1 ring-ink/5 md:p-10">
+          <Reveal className="rounded-2xl bg-paper p-8 shadow-sm ring-1 ring-ink/5 md:p-10">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-crust">Kwaliteit</p>
             <h2 className="mt-3 font-display text-3xl">Volgens de hoogste standaarden</h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/80">
               Voor de <b className={b}>kwaliteit van uw broden en gebak</b>, nemen we geen enkel risico. We kiezen dan ook voluit voor verse producten, die volgens de hoogste standaarden worden verwerkt, bereid en vervoerd.
             </p>
           </Reveal>
-          <Reveal delay={120} className="rounded-[2rem] bg-paper p-8 shadow-sm ring-1 ring-ink/5 md:p-10">
+          <Reveal delay={120} className="rounded-2xl bg-paper p-8 shadow-sm ring-1 ring-ink/5 md:p-10">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-crust">Gekeurd</p>
             <h2 className="mt-3 font-display text-3xl">Elk jaar extern gecontroleerd</h2>
             <p className="mt-4 text-lg leading-relaxed text-ink/80">
@@ -56,7 +56,7 @@ export default function Diensten() {
           </Reveal>
         </div>
 
-        <Reveal className="mt-8 flex flex-wrap items-center justify-between gap-6 rounded-[2rem] bg-butter p-8 md:p-10">
+        <Reveal className="mt-8 flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-butter p-8 md:p-10">
           <p className="max-w-xl font-display text-2xl leading-snug">Wilt u meer weten over onze service voor bedrijven en professionals?</p>
           <Link href="/contact" className="rounded-full bg-blue px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-0.5 hover:bg-blue-deep">
             Neem contact met ons op! →

@@ -20,7 +20,7 @@ export default function Gallery({ images }: { images: string[] }) {
       </div>
       <ul ref={track} className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {images.map((src, i) => (
-          <li key={src} className="relative aspect-[4/5] w-[260px] shrink-0 snap-start overflow-hidden rounded-3xl bg-blue-soft md:w-[300px]">
+          <li key={src} className="relative aspect-[4/5] w-[260px] shrink-0 snap-start overflow-hidden rounded-2xl bg-blue-soft md:w-[300px]">
             <Image src={src} alt={`Gijbels assortiment ${i + 1}`} fill sizes="300px" className="object-cover transition duration-700 hover:scale-105" />
           </li>
         ))}
