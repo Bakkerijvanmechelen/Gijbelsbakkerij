@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { hoursLines, kindLabel, routeUrl, telHref, websiteLabel, websiteUrl, type Shop } from "@/lib/shop-types";
 
-type CardShop = Pick<Shop, "name" | "kind" | "street" | "postal_code" | "city" | "phone" | "fax" | "note" | "website" | "hours" | "logo_url"> & { id?: string };
+type CardShop = Pick<Shop, "name" | "kind" | "street" | "postal_code" | "city" | "phone" | "fax" | "note" | "website" | "webshop_url" | "google_url" | "hours" | "logo_url"> & { id?: string };
 
 function Logo({ shop }: { shop: CardShop }) {
   const box = "grid size-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-white ring-1 ring-ink/10";
@@ -87,6 +87,11 @@ export default function ShopCard({ shop, active, onSelect }: { shop: CardShop; a
             Bel
           </a>
         )}
+        {shop.webshop_url && (
+          <a href={websiteUrl(shop.webshop_url)} target="_blank" rel="noopener noreferrer" className="rounded-full border-2 border-blue px-5 py-2 text-sm font-bold text-blue transition hover:bg-blue hover:text-white">
+            Webshop ↗
+          </a>
+        )}
       </div>
         </div>
       {lines.length > 0 && (
@@ -97,6 +102,11 @@ export default function ShopCard({ shop, active, onSelect }: { shop: CardShop; a
               <li key={l}>{l}</li>
             ))}
           </ul>
+          {shop.google_url && (
+            <a href={websiteUrl(shop.google_url)} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-xs font-bold text-blue underline underline-offset-2">
+              Actuele uren op Google ↗
+            </a>
+          )}
         </div>
       )}
 

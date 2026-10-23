@@ -42,7 +42,16 @@ export default async function SiteFooter() {
           </ul>
         </nav>
       </div>
-      <p className="border-t border-flour/10 py-5 text-center text-sm text-flour/60">© 2026 Bakkerij Gijbels</p>
+      <p className="border-t border-flour/10 py-5 text-center text-sm text-flour/60">
+        © 2026 Bakkerij Gijbels ·{" "}
+        <Link href="/privacy" className="underline transition hover:text-butter">
+          Privacyverklaring
+        </Link>{" "}
+        ·{" "}
+        <Link href="/cookiebeleid" className="underline transition hover:text-butter">
+          Cookiebeleid
+        </Link>
+      </p>
     </footer>
   );
 }

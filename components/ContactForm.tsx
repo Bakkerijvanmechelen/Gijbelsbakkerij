@@ -37,6 +37,20 @@ export default function ContactForm() {
         Uw bericht *
         <textarea name="message" required rows={6} className={field} />
       </label>
+      <label className="flex items-start gap-3 text-sm sm:col-span-2">
+        <input name="privacy" type="checkbox" required className="mt-1 size-4 accent-blue" />
+        <span>
+          Ik bevestig dat mijn gegevens verwerkt mogen worden zoals beschreven in de{" "}
+          <a href="/privacy" className="font-bold text-blue underline">
+            privacyverklaring
+          </a>{" "}
+          en het{" "}
+          <a href="/cookiebeleid" className="font-bold text-blue underline">
+            cookiebeleid
+          </a>
+          . *
+        </span>
+      </label>
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
       {state && !state.ok && (
         <p role="alert" className="rounded-2xl bg-red-100 px-4 py-3 font-bold text-red-900 sm:col-span-2">

@@ -23,6 +23,10 @@ body {
 }
 
 html { scroll-behavior: smooth; }
+/* Nooit zijwaarts scrollen op mobiel, ook niet door elementen die nog van opzij moeten binnenschuiven */
+html, body { overflow-x: clip; }
+p, li { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
 ::selection { background: var(--color-butter); }
 
 /* Een zachte korrel, zoals meel op een werkblad */

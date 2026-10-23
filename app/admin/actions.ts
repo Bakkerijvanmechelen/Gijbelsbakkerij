@@ -103,6 +103,8 @@ export async function saveShop(_prev: ShopState, formData: FormData): Promise<Sh
     fax: orNull(text(formData.get("fax"), 40)),
     note: orNull(text(formData.get("note"), 200)),
     website: orNull(text(formData.get("website"), 200)),
+    webshop_url: orNull(text(formData.get("webshop_url"), 300)),
+    google_url: orNull(text(formData.get("google_url"), 500)),
     hours: orNull(
       text(formData.get("hours"), 1200)
         .split("\n")

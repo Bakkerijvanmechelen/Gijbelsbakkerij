@@ -13,10 +13,13 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   const last = clean(formData.get("last"), 80);
   const email = clean(formData.get("email"), 200);
   const message = clean(formData.get("message"), 3000);
+  const privacy = formData.get("privacy") === "on";
 
   if (!first || !last || !message || !/^\S+@\S+\.\S+$/.test(email)) {
     return { ok: false, message: "Vul alle velden in en geef een geldig e-mailadres op." };
   }
+
+  if (!privacy) return { ok: false, message: "Bevestig de privacyverklaring om te verzenden." };
 
   const { error } = await adminClient()
     .from("gijbels_contact_requests")

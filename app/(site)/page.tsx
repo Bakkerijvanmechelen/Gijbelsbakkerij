@@ -31,7 +31,7 @@ export default async function Home() {
             <Words text="Echt bakmanschap" />
           </h1>
           <p className="fade-up mt-6 max-w-xl text-lg leading-relaxed text-flour/90" style={{ animationDelay: "240ms" }}>
-            De bakker met het lekkerste assortiment. Brood dat krokant gebakken wordt in onze eigen ovens, patisserie en vlaaien, in {n} vestigingen vlakbij u.
+            De bakker met het lekkerste assortiment. Brood dat krokant gebakken wordt in onze eigen ovens, patisserie en vlaaien, in {n} vestigingen vlakbij{"\u00A0"}u.
           </p>
           <Link href="/winkels" className="btn-arrow fade-up mt-8 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white" style={{ animationDelay: "700ms" }}>
             Ontdek onze winkels <span aria-hidden>→</span>

@@ -23,6 +23,8 @@ export default function ShopForm({ shop, onDone }: { shop?: Shop; onDone?: () =>
     fax: shop?.fax ?? "",
     note: shop?.note ?? "",
     website: shop?.website ?? "",
+    webshop_url: shop?.webshop_url ?? "",
+    google_url: shop?.google_url ?? "",
     hours: shop?.hours ?? "",
   });
   const [logo, setLogo] = useState(shop?.logo_url ?? "");
@@ -114,6 +116,16 @@ export default function ShopForm({ shop, onDone }: { shop?: Shop; onDone?: () =>
         </div>
 
         <label className={label}>
+          Webshop <span className={hint}>(optioneel, als deze bakkerij online verkoopt)</span>
+          <input name="webshop_url" value={v.webshop_url} onChange={set("webshop_url")} className={fieldCls} placeholder="www.mijnbakkerij.be/webshop" />
+        </label>
+
+        <label className={label}>
+          Google-bedrijfsprofiel <span className={hint}>(optioneel, dan verwijst de kaart naar de actuele openingsuren op Google)</span>
+          <input name="google_url" value={v.google_url} onChange={set("google_url")} className={fieldCls} placeholder="https://g.page/..." />
+        </label>
+
+        <label className={label}>
           Openingsuren <span className={hint}>(één regel per dag of groep van dagen)</span>
           <textarea name="hours" rows={5} value={v.hours} onChange={set("hours")} className={fieldCls} placeholder={"Ma tot Za: 7.00u - 17.45u\nZon en feestdagen: 7.00u - 13.00u\nDinsdag gesloten"} />
         </label>
@@ -167,7 +179,7 @@ export default function ShopForm({ shop, onDone }: { shop?: Shop; onDone?: () =>
 
       <aside aria-label="Voorbeeld" className="lg:sticky lg:top-6 lg:self-start">
         <p className="mb-3 font-bold">Zo komt de winkel op de website</p>
-        <ShopCard shop={{ ...v, logo_url: logo || null, phone: v.phone || null, fax: v.fax || null, note: v.note || null, website: v.website || null, hours: v.hours || null }} />
+        <ShopCard shop={{ ...v, logo_url: logo || null, phone: v.phone || null, fax: v.fax || null, note: v.note || null, website: v.website || null, webshop_url: v.webshop_url || null, google_url: v.google_url || null, hours: v.hours || null }} />
       </aside>
     </div>
   );
