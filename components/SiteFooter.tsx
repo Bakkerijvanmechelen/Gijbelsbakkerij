@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { hoursLines, telHref } from "@/lib/shop-types";
+import { getContent, withCount } from "@/lib/cms";
 import { getShops } from "@/lib/shops";
 
 export default async function SiteFooter() {
-  const shops = await getShops();
+  const [shops, c] = await Promise.all([getShops(), getContent()]);
   const main = shops.find((s) => s.kind === "eigen");
 
   return (
@@ -28,7 +29,7 @@ export default async function SiteFooter() {
               </a>
             </p>
           )}
-          <p className="mt-2 text-sm text-flour/60">{shops.length} vestigingen in de provincie Antwerpen</p>
+          <p className="mt-2 text-sm text-flour/60">{withCount(c["footer.shops"], shops.length)}</p>
         </div>
         <nav aria-label="Voettekst" className="sm:text-right">
           <ul className="grid gap-1.5 text-flour/80">

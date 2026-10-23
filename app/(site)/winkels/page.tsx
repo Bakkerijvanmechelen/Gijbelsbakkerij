@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import ShopExplorer from "@/components/ShopExplorer";
+import { getContent } from "@/lib/cms";
 import { getShops } from "@/lib/shops";
 
 export const metadata: Metadata = {
@@ -9,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Winkels() {
-  const shops = await getShops();
+  const [shops, c] = await Promise.all([getShops(), getContent()]);
   return (
     <>
-      <PageHero eyebrow="Winkels" title="Onze winkels" subtitle="Bakkerij Gijbels: puur genieten, ook bij u in de buurt!" />
+      <PageHero eyebrow={c["shops.hero.eyebrow"]} title={c["shops.hero.title"]} subtitle={c["shops.hero.subtitle"]} image={{ src: c["shops.hero.image"], alt: "" }} />
       <ShopExplorer shops={shops} />
     </>
   );

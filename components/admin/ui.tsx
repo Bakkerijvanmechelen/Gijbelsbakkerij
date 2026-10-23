@@ -57,6 +57,7 @@ export const fieldCls =
   "w-full rounded-lg border border-ink/25 bg-white px-4 py-3 text-base outline-none transition focus:border-crust focus:ring-2 focus:ring-crust/30 disabled:bg-ink/5";
 
 export const Icon = {
+  pencil: <path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" />,
   home: <path d="M3 11 12 3l9 8M5 9.5V21h5v-6h4v6h5V9.5" />,
   mail: (<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>),
   folder: <path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />,

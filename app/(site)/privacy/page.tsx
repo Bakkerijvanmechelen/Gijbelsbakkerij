@@ -7,15 +7,17 @@ export default function Privacy() {
   return (
     <LegalPage title="Privacyverklaring" updated="oktober 2026">
       <p>
-        Bakkerij Gijbels hecht veel belang aan de bescherming van uw persoonsgegevens. In deze verklaring leest u welke gegevens wij verzamelen via deze website,
+        Bakkerij Gijbels NV hecht veel belang aan de bescherming van uw persoonsgegevens. In deze verklaring leest u welke gegevens wij verzamelen via deze website,
         waarom, en welke rechten u heeft.
       </p>
 
       <h2>Wie is verantwoordelijk?</h2>
       <p>
-        Bakkerij Gijbels
+        Bakkerij Gijbels NV
         <br />
         Kanaaldijk 255, 2900 Schoten
+        <br />
+        Ondernemingsnummer 0882.251.919
         <br />
         <a href="mailto:info@bakkerijgijbels.be">info@bakkerijgijbels.be</a> · <a href="tel:+3233224421">03 322 44 21</a>
       </p>

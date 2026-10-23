@@ -5,36 +5,35 @@ import CtaBand from "@/components/CtaBand";
 import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import Words from "@/components/Words";
-import { tiles } from "@/lib/content";
+import Rich from "@/components/Rich";
+import { getContent, withCount } from "@/lib/cms";
+import { homeBlockCount, homeCardCount } from "@/lib/cms-schema";
 import { getShopCount } from "@/lib/shops";
 
-const cards = [
-  { title: "Brood", image: "/images/cat-brood.jpg", href: "/assortiment#broden", text: "Krokant gebakken in onze speciale broodovens, in alle vormen en formaten: van meergranen en luchtig wit tot rozijnen- en suikerbrood." },
-  { title: "Pistolets & koffiekoeken", image: "/images/cat-koffiekoeken.jpg", href: "/assortiment#klassiek", text: "De klassiekers van uw bakker, gemaakt volgens uitvoerig verfijnde recepten en met grondstoffen van de hoogste kwaliteit." },
-  { title: "Patisserie", image: "/images/cat-patisserie.jpg", href: "/assortiment#patisserie", text: "Kies uw favoriet in onze koeltoog. Verjaardags- en bruidstaarten bereiden en versieren we tot in de puntjes." },
-  { title: "Vlaaien", image: "/images/cat-vlaaien.jpg", href: "/assortiment#patisserie", text: "Onze royaal gevulde fruitvlaaien worden door onze klanten het meest gesmaakt. Het hele jaar door vers." },
-];
+const range = (n: number) => Array.from({ length: n }, (_, i) => i + 1);
+const cardHref = ["/assortiment#broden", "/assortiment#klassiek", "/assortiment#patisserie", "/assortiment#patisserie"];
 
 export default async function Home() {
-  const n = await getShopCount();
+  const [n, c] = await Promise.all([getShopCount(), getContent()]);
+  const t = (key: string) => withCount(c[key], n);
 
   return (
     <>
       <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-blue-deep text-flour">
         <Parallax speed={0.3}>
-          <Image src="/images/hero-bakker.jpg" alt="Een bakker strooit bloem" fill priority sizes="100vw" className="hero-zoom object-cover opacity-50 mix-blend-luminosity" />
+          <Image src={c["home.hero.image"]} alt="" fill priority sizes="100vw" className="hero-zoom object-cover opacity-50 mix-blend-luminosity" />
         </Parallax>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-deep/90 via-blue-deep/50 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-5 pt-24">
-          <p className="fade-up text-sm font-bold uppercase tracking-[0.25em] text-butter">Ambachtelijke bakkerij in Antwerpen</p>
+          <p className="fade-up text-sm font-bold uppercase tracking-[0.25em] text-butter">{t("home.hero.eyebrow")}</p>
           <h1 className="fade-up mt-4 max-w-3xl font-display text-5xl leading-[1.05] md:text-7xl" >
-            <Words text="Echt bakmanschap" />
+            <Words text={t("home.hero.title")} />
           </h1>
-          <p className="fade-up mt-6 max-w-xl text-lg leading-relaxed text-flour/90" style={{ animationDelay: "240ms" }}>
-            De bakker met het lekkerste assortiment. Brood dat krokant gebakken wordt in onze eigen ovens, patisserie en vlaaien, in {n} vestigingen vlakbij{"\u00A0"}u.
-          </p>
+          <div className="fade-up mt-6 max-w-xl space-y-3 text-lg leading-relaxed text-flour/90" style={{ animationDelay: "240ms" }}>
+            <Rich text={t("home.hero.text").replace(/ u\./g, "\u00A0u.")} />
+          </div>
           <Link href="/winkels" className="btn-arrow fade-up mt-8 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white" style={{ animationDelay: "700ms" }}>
-            Ontdek onze winkels <span aria-hidden>→</span>
+            {t("home.hero.button")} <span aria-hidden>→</span>
           </Link>
         </div>
         <a href="#assortiment" aria-label="Naar beneden" className="bob absolute bottom-6 left-1/2 hidden size-10 -translate-x-1/2 place-items-center rounded-full border border-flour/40 text-flour/80 md:grid">
@@ -44,20 +43,24 @@ export default async function Home() {
 
       <section id="assortiment" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
         <Reveal>
-          <h2 className="font-display text-4xl text-blue md:text-5xl">Ons assortiment</h2>
-          <p className="mt-4 max-w-2xl text-lg text-ink/80">U kent het wel: de typische geur van uw lokale bakker. Er gaat niets boven versgebakken brood, gebak, taarten en patisserie.</p>
+          <h2 className="font-display text-4xl text-blue md:text-5xl">{t("home.cards.title")}</h2>
+          <div className="mt-4 max-w-2xl space-y-3 text-lg text-ink/80">
+            <Rich text={t("home.cards.intro")} boldClass="font-bold text-blue" />
+          </div>
         </Reveal>
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
-          {cards.map((c, i) => (
-            <Reveal as="li" key={c.title} delay={(i % 2) * 120} from={i % 2 ? "right" : "left"} className="lift overflow-hidden rounded-2xl bg-white shadow-md shadow-ink/10">
+          {range(homeCardCount).map((k, i) => (
+            <Reveal as="li" key={k} delay={(i % 2) * 120} from={i % 2 ? "right" : "left"} className="lift overflow-hidden rounded-2xl bg-white shadow-md shadow-ink/10">
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image src={c.image} alt={c.title} fill sizes="(min-width: 768px) 560px, 100vw" className="zoom-img object-cover" />
+                <Image src={c[`home.card${k}.image`]} alt={t(`home.card${k}.title`)} fill sizes="(min-width: 768px) 560px, 100vw" className="zoom-img object-cover" />
               </div>
               <div className="p-6">
-                <h3 className="font-display text-2xl text-blue">{c.title}</h3>
-                <p className="mt-2 text-ink/80">{c.text}</p>
-                <Link href={c.href} className="mt-4 inline-block text-sm font-bold uppercase tracking-wider text-crust underline underline-offset-4 hover:text-blue">
-                  Ontdek meer
+                <h3 className="font-display text-2xl text-blue">{t(`home.card${k}.title`)}</h3>
+                <div className="mt-2 space-y-2 text-ink/80">
+                  <Rich text={t(`home.card${k}.text`)} boldClass="font-bold text-blue" />
+                </div>
+                <Link href={cardHref[k - 1] ?? "/assortiment"} className="mt-4 inline-block text-sm font-bold uppercase tracking-wider text-crust underline underline-offset-4 hover:text-blue">
+                  {t("home.cards.link")}
                 </Link>
               </div>
             </Reveal>
@@ -66,45 +69,44 @@ export default async function Home() {
       </section>
 
       <section className="relative overflow-hidden bg-blue-deep text-flour">
-        <Image src="/images/galerij-4.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 mix-blend-luminosity" />
+        <Image src={c["home.shops.image"]} alt="" fill sizes="100vw" className="object-cover opacity-20 mix-blend-luminosity" />
         <div className="relative mx-auto max-w-6xl px-5 py-24">
           <Reveal>
-            <h2 className="font-display text-4xl md:text-5xl"><span className="text-butter"><CountUp to={n} /></span> vestigingen, dezelfde verrukkelijke kwaliteit</h2>
+            <h2 className="font-display text-4xl md:text-5xl"><span className="text-butter"><CountUp to={n} /></span> {t("home.shops.title")}</h2>
           </Reveal>
           <ul className="mt-10 grid gap-4 md:grid-cols-3">
-            {[
-              ["Versheid", "Wat startte als een kleine buurtbakkerij in Berchem, groeide uit tot een bakkerij die de standaard zet als het aankomt op versheid en smaak."],
-              ["Ingrediënten", "Voedzame broden bereid met de beste ingrediënten die de natuur ons te bieden heeft, en verrassende recepturen voor gebak die van elke hap een feest maken."],
-              ["Met de glimlach", `Onze ${n} vestigingen in de provincie Antwerpen serveren het lekkerste van een ambachtelijke bakker, door medewerkers die houden van hun vak.`],
-            ].map(([t, p], i) => (
-              <Reveal as="li" key={t} delay={i * 140} from="zoom" className="rounded-xl border border-flour/15 bg-blue-deep/70 p-6 backdrop-blur">
-                <h3 className="font-display text-xl text-butter">{t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-flour/85">{p}</p>
+            {range(homeBlockCount).map((k, i) => (
+              <Reveal as="li" key={k} delay={i * 140} from="zoom" className="rounded-xl border border-flour/15 bg-blue-deep/70 p-6 backdrop-blur">
+                <h3 className="font-display text-xl text-butter">{t(`home.block${k}.title`)}</h3>
+                <div className="mt-3 space-y-2 text-sm leading-relaxed text-flour/85">
+                  <Rich text={t(`home.block${k}.text`)} boldClass="font-bold text-white" />
+                </div>
               </Reveal>
             ))}
           </ul>
-          <p className="mt-10 max-w-2xl text-flour/90">Kom langs en proef het zelf. Een overzicht van al onze bakkerijen vindt u bij de winkels.</p>
+          <div className="mt-10 max-w-2xl space-y-3 text-flour/90">
+            <Rich text={t("home.shops.closing")} boldClass="font-bold text-white" />
+          </div>
           <Link href="/winkels" className="mt-6 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white">
-            Alle winkels bekijken
+            {t("home.shops.button")}
           </Link>
         </div>
       </section>
 
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
         <Reveal from="left" className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-md shadow-ink/10">
-          <Image src={tiles[0].image.replace("cat-brood", "assortiment-broden")} alt="Gijbels brood" fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
+          <Image src={c["home.about.image"]} alt="" fill sizes="(min-width: 768px) 560px, 100vw" className="object-cover" />
         </Reveal>
         <Reveal delay={150} from="right">
-          <h2 className="font-display text-4xl text-blue md:text-5xl">De bakker met het lekkerste assortiment</h2>
+          <h2 className="font-display text-4xl text-blue md:text-5xl">{t("home.about.title")}</h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink/80">
-            <p>
-              U moest eens weten hoe goed u Bakkerij Gijbels al kent. Waarschijnlijk genoot u al met volle teugen van onze gebakjes, of smeerde u de lekkerste boterham met brood dat krokant gebakken werd in onze ovens.
-            </p>
-            <p>Wie weet werd de taart die u met uw verjaardag zo smakelijk onder uw vrienden verdeelde, bereid door onze gedreven bakkers.</p>
+            <Rich text={t("home.about.text")} boldClass="font-bold text-blue" />
           </div>
           <div className="mt-8 rounded-xl bg-blue-soft p-6 text-sm leading-relaxed text-blue-deep">
-            <p className="font-display text-xl">Een begrip in de provincie Antwerpen</p>
-            <p className="mt-2">Onze broden, taarten, patisserie en gebakjes vinden elke dag weer hun weg naar honderden huiskamers, waar ze alle gezellige momenten de juiste smaak geven.</p>
+            <p className="font-display text-xl">{t("home.about.boxTitle")}</p>
+            <div className="mt-2 space-y-2">
+              <Rich text={t("home.about.boxText")} />
+            </div>
           </div>
         </Reveal>
       </section>
