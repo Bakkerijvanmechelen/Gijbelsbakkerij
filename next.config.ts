@@ -4,10 +4,19 @@ import type { NextConfig } from "next";
 // Bij de livegang zet je die variabele in Vercel op true en deploy je opnieuw.
 const indexable = process.env.ALLOW_INDEXING === "true";
 
+const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" }];
+
 const nextConfig: NextConfig = {
   async headers() {
-    if (indexable) return [];
-    return [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" }] }];
+    return [
+      // De tijdelijke Vercel-adressen blijven altijd onzichtbaar voor zoekmachines, ook na de livegang.
+      { source: "/:path*", has: [{ type: "host", value: "(?<sub>.+)\\.vercel\\.app" }], headers: noindex },
+      ...(indexable ? [] : [{ source: "/:path*", headers: noindex }]),
+    ];
+  },
+  // Oude adressen van de Wix-site, zodat bladwijzers en zoekresultaten blijven werken.
+  async redirects() {
+    return [{ source: "/kopie-van-home", destination: "/", permanent: true }];
   },
   images: {
     remotePatterns: [{ protocol: "https", hostname: "jsxdsigtwanxykbmvdhc.supabase.co", pathname: "/storage/v1/object/public/**" }],
