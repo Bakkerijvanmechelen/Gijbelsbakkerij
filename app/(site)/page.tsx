@@ -19,29 +19,29 @@ export default async function Home() {
 
   return (
     <>
-      <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-blue-deep text-flour">
+      <section className="relative flex min-h-[min(58vh,620px)] items-center overflow-hidden bg-blue-deep text-flour">
         <Parallax speed={0.3}>
           <Image src={c["home.hero.image"]} alt="" fill priority sizes="100vw" className="hero-zoom object-cover opacity-50 mix-blend-luminosity" />
         </Parallax>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-deep/90 via-blue-deep/50 to-transparent" />
-        <div className="relative mx-auto w-full max-w-6xl px-5 pt-24">
+        <div className="relative mx-auto w-full max-w-6xl px-5 pb-12 pt-28">
           <p className="fade-up text-sm font-bold uppercase tracking-[0.25em] text-butter">{t("home.hero.eyebrow")}</p>
-          <h1 className="fade-up mt-4 max-w-3xl font-display text-5xl leading-[1.05] md:text-7xl" >
+          <h1 className="fade-up mt-4 max-w-3xl font-display text-4xl leading-[1.05] md:text-6xl">
             <Words text={t("home.hero.title")} />
           </h1>
-          <div className="fade-up mt-6 max-w-xl space-y-3 text-lg leading-relaxed text-flour/90" style={{ animationDelay: "240ms" }}>
+          <div className="fade-up mt-4 max-w-xl space-y-3 text-lg leading-relaxed text-flour/90" style={{ animationDelay: "240ms" }}>
             <Rich text={t("home.hero.text").replace(/ u\./g, "\u00A0u.")} />
           </div>
-          <Link href="/winkels" className="btn-arrow fade-up mt-8 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white" style={{ animationDelay: "700ms" }}>
+          <Link href="/winkels" className="btn-arrow fade-up mt-6 inline-block rounded-full bg-butter px-7 py-3 font-bold text-ink transition hover:bg-white" style={{ animationDelay: "700ms" }}>
             {t("home.hero.button")} <span aria-hidden>→</span>
           </Link>
         </div>
-        <a href="#assortiment" aria-label="Naar beneden" className="bob absolute bottom-6 left-1/2 hidden size-10 -translate-x-1/2 place-items-center rounded-full border border-flour/40 text-flour/80 md:grid">
+        <a href="#assortiment" aria-label="Naar beneden" className="bob absolute bottom-4 left-1/2 hidden size-10 -translate-x-1/2 place-items-center rounded-full border border-flour/40 text-flour/80 md:grid">
           ↓
         </a>
       </section>
 
-      <section id="assortiment" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
+      <section id="assortiment" className="mx-auto max-w-6xl scroll-mt-16 px-5 pb-24 pt-14 md:pt-16">
         <Reveal>
           <h2 className="font-display text-4xl text-blue md:text-5xl">{t("home.cards.title")}</h2>
           <div className="mt-4 max-w-2xl space-y-3 text-lg text-ink/80">
