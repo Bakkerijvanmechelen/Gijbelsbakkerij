@@ -90,3 +90,20 @@ h1, h2, h3 { text-wrap: balance; }
 /* Leaflet: de kaart mag niet boven het menu uitkomen */
 .leaflet-container { font-family: var(--font-lato), system-ui, sans-serif; z-index: 0; border-radius: inherit; }
 .leaflet-popup-content-wrapper { border-radius: 16px; }
+
+/* Cookiebanner (vanilla-cookieconsent) in de huisstijl */
+#cc-main {
+  --cc-font-family: inherit;
+  --cc-btn-primary-bg: #263f8f;
+  --cc-btn-primary-border-color: #263f8f;
+  --cc-btn-primary-hover-bg: #1b2d6b;
+  --cc-btn-primary-hover-border-color: #1b2d6b;
+  --cc-btn-secondary-bg: #f1ece4;
+  --cc-btn-secondary-hover-bg: #e6dfd3;
+  --cc-toggle-on-bg: #263f8f;
+  --cc-link-color: #263f8f;
+  --cc-modal-border-radius: 1rem;
+  --cc-btn-border-radius: 999px;
+}
+/* De reCAPTCHA-badge mag weg zolang de vermelding bij het formulier staat. */
+.grecaptcha-badge { visibility: hidden; }

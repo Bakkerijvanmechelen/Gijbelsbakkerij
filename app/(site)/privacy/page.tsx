@@ -59,8 +59,8 @@ export default function Privacy() {
 
       <h2>Met wie delen wij uw gegevens?</h2>
       <p>
-        Alleen met partijen die ons helpen de website te laten werken en die in onze opdracht handelen (verwerkers): onze hostingpartner (Vercel) en onze
-        databaseleverancier (Supabase). Met hen zijn verwerkersafspraken gemaakt. Wij verkopen uw gegevens nooit aan derden. Als gegevens buiten de Europese
+        Alleen met partijen die ons helpen de website te laten werken en die in onze opdracht handelen (verwerkers): onze hostingpartner (Vercel), onze
+        databaseleverancier (Supabase) en Google (reCAPTCHA, om het contactformulier tegen spam te beschermen). Met hen zijn verwerkersafspraken gemaakt. Wij verkopen uw gegevens nooit aan derden. Als gegevens buiten de Europese
         Economische Ruimte verwerkt worden, gebeurt dat enkel met passende waarborgen, zoals de standaardcontractbepalingen van de Europese Commissie.
       </p>
 
@@ -91,7 +91,7 @@ export default function Privacy() {
 
       <h2>Cookies</h2>
       <p>
-        Lees in ons <a href="/cookiebeleid">cookiebeleid</a> welke functionele cookies wij gebruiken.
+        Lees in ons <a href="/cookiebeleid">cookiebeleid</a> welke cookies wij gebruiken en hoe u uw keuze wijzigt.
       </p>
 
       <h2>Wijzigingen</h2>

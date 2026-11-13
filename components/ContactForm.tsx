@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { sendContact, type ContactState } from "@/app/(site)/contact/actions";
+import RecaptchaField, { RecaptchaNotice } from "@/components/RecaptchaField";
 
 const field = "w-full rounded-2xl border-0 bg-cream px-4 py-3.5 text-base ring-1 ring-ink/15 outline-none transition focus:bg-white focus:ring-2 focus:ring-blue";
 
@@ -51,6 +52,7 @@ export default function ContactForm() {
           . *
         </span>
       </label>
+      <RecaptchaField action="contact" />
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
       {state && !state.ok && (
         <p role="alert" className="rounded-2xl bg-red-100 px-4 py-3 font-bold text-red-900 sm:col-span-2">
@@ -60,6 +62,7 @@ export default function ContactForm() {
       <button disabled={pending} className="rounded-full bg-blue px-8 py-4 text-lg font-bold text-white transition hover:bg-blue-deep disabled:opacity-60 sm:col-span-2 sm:justify-self-start">
         {pending ? "Verzenden…" : "Bericht versturen"}
       </button>
+      <RecaptchaNotice className="text-xs text-ink/60 sm:col-span-2" />
     </form>
   );
 }

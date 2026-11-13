@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "@/components/CookieBanner";
 import { hoursLines, telHref } from "@/lib/shop-types";
 import { getContent, withCount } from "@/lib/cms";
 import { getShops } from "@/lib/shops";
@@ -51,7 +52,8 @@ export default async function SiteFooter() {
         ·{" "}
         <Link href="/cookiebeleid" className="underline transition hover:text-butter">
           Cookiebeleid
-        </Link>
+        </Link>{" "}
+        · <CookieSettingsButton className="underline transition hover:text-butter" />
       </p>
     </footer>
   );

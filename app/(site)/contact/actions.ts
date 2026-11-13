@@ -1,5 +1,6 @@
 "use server";
 
+import { verifyRecaptcha } from "@/lib/recaptcha";
 import { adminClient } from "@/lib/supabase/admin";
 
 export type ContactState = { ok: boolean; message: string } | null;
@@ -20,6 +21,9 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
   }
 
   if (!privacy) return { ok: false, message: "Bevestig de privacyverklaring om te verzenden." };
+  if (!(await verifyRecaptcha(clean(formData.get("recaptcha"), 4000), "contact"))) {
+    return { ok: false, message: "De spamcontrole is mislukt. Wacht even en probeer opnieuw." };
+  }
 
   const { error } = await adminClient()
     .from("gijbels_contact_requests")
